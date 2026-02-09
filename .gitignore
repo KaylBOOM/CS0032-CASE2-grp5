@@ -1,0 +1,8 @@
+# PHP project ignores
+vendor/
+.env
+*.log
+.DS_Store
+Thumbs.db
+/uploads/*
+!/uploads/.gitkeep
