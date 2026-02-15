@@ -52,7 +52,7 @@ foreach ($cartItems as $item) {
 $tax   = round($subtotal * TAX_RATE, 2);
 $total = $subtotal + $tax;
 
-$pageTitle = 'Shopping Cart — Online Bookstore';
+$pageTitle = 'Shopping Cart — Storyscape';
 require_once __DIR__ . '/includes/header.php';
 ?>
 
@@ -96,13 +96,37 @@ require_once __DIR__ . '/includes/header.php';
             </table>
         </div>
 
-        <div class="card mt-1" style="max-width:350px; margin-left:auto;">
-            <p><strong>Subtotal:</strong> $<?= number_format($subtotal, 2) ?></p>
-            <p><strong>Tax (<?= TAX_RATE * 100 ?>%):</strong> $<?= number_format($tax, 2) ?></p>
-            <p style="font-size:1.2rem;"><strong>Total:</strong> $<?= number_format($total, 2) ?></p>
-            <button type="submit" class="btn btn-secondary btn-sm">Update Quantities</button>
-            <a href="checkout.php" class="btn btn-success" style="width:100%; margin-top:0.5rem;">Proceed to Checkout</a>
-        </div>
+        <div style="max-width: 400px; margin: 2rem auto; background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #f0f0f0;">
+    
+    <h3 style="margin-top: 0; margin-bottom: 1.5rem; text-align: center; color: #333;">Order Summary</h3>
+    
+    <div style="display: flex; justify-content: space-between; margin-bottom: 0.8rem; color: #666;">
+        <span>Subtotal</span>
+        <span style="font-weight: 600; color: #333;">$<?= number_format($subtotal, 2) ?></span>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-bottom: 0.8rem; color: #666;">
+        <span>Tax (<?= TAX_RATE * 100 ?>%)</span>
+        <span style="font-weight: 600; color: #333;">$<?= number_format($tax, 2) ?></span>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid #eee; margin: 1.5rem 0;">
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <span style="font-size: 1.1rem; font-weight: bold; color: #333;">Total</span>
+        <span style="font-size: 1.8rem; font-weight: bold; color: #333;">$<?= number_format($total, 2) ?></span>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+        <button type="submit" class="btn btn-secondary" style="width: 100%; padding: 10px; border-radius: 8px; background: #f3f4f6; color: #4b5563; border: none; cursor: pointer; font-weight: 500;">
+            ↻ Update Quantities
+        </button>
+        
+        <a href="checkout.php" class="btn btn-success" style="display: block; width: 100%; text-align: center; padding: 14px; background: #16a34a; color: white; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 6px rgba(22, 163, 74, 0.2);">
+            Proceed to Checkout →
+        </a>
+    </div>
+</div>
     </form>
 <?php endif; ?>
 

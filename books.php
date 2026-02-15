@@ -2,7 +2,7 @@
 /**
  * Books Browsing & Search Page
  */
-$pageTitle = 'Books — Online Bookstore';
+$pageTitle = 'Books — Storyscape';
 require_once __DIR__ . '/includes/header.php';
 require_once __DIR__ . '/config/database.php';
 

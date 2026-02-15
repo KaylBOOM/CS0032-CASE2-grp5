@@ -24,7 +24,7 @@ $stmt = $pdo->prepare('SELECT oi.*, b.title, b.author FROM order_items oi JOIN b
 $stmt->execute([$orderId]);
 $items = $stmt->fetchAll();
 
-$pageTitle = 'Order Confirmed — Online Bookstore';
+$pageTitle = 'Order Confirmed — Storyscape';
 require_once __DIR__ . '/includes/header.php';
 ?>
 

@@ -3,6 +3,12 @@
  * Order History Dashboard
  */
 session_start();
+
+// Prevent browser caching
+header("Cache-Control: no-cache, no-store, must-revalidate");
+header("Pragma: no-cache");
+header("Expires: 0");
+
 require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/config/database.php';
 
@@ -15,7 +21,7 @@ $stmt = $pdo->prepare('SELECT * FROM orders WHERE user_id = ? ORDER BY created_a
 $stmt->execute([$userId]);
 $orders = $stmt->fetchAll();
 
-$pageTitle = 'My Orders — Online Bookstore';
+$pageTitle = 'My Orders — Storyscape';
 require_once __DIR__ . '/includes/header.php';
 ?>
 

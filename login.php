@@ -2,7 +2,7 @@
 /**
  * User Login Page
  */
-$pageTitle = 'Login — Online Bookstore';
+$pageTitle = 'Login — Storyscape';
 require_once __DIR__ . '/includes/auth.php';
 
 if (session_status() === PHP_SESSION_NONE) {

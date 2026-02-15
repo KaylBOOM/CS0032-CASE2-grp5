@@ -5,7 +5,7 @@
  * Update these settings to match your local/production environment.
  */
 
-define('DB_HOST', 'localhost');
+define('DB_HOST', 'localhost;port=3307');
 define('DB_NAME', 'online_bookstore');
 define('DB_USER', 'root');
 define('DB_PASS', '');

@@ -16,13 +16,13 @@ if (!$book) {
     exit;
 }
 
-$pageTitle = htmlspecialchars($book['title']) . ' — Online Bookstore';
+$pageTitle = htmlspecialchars($book['title']) . ' — Storyscape';
 require_once __DIR__ . '/includes/header.php';
 ?>
 
 <div class="card" style="display:flex; flex-wrap:wrap; gap:2rem;">
-    <div style="flex:0 0 250px;">
-        <img src="assets/covers/<?= htmlspecialchars($book['cover_image']) ?>" alt="<?= htmlspecialchars($book['title']) ?>" style="border-radius:8px; width:100%;">
+    <div style="flex:0 0 350px; text-align:center;">
+        <img src="assets/covers/<?= htmlspecialchars($book['cover_image']) ?>" alt="<?= htmlspecialchars($book['title']) ?>" style="border-radius:8px; width:100%; max-width:350px; height:auto; object-fit:contain; background:#f8fafc; padding:1rem;">
     </div>
     <div style="flex:1; min-width:250px;">
         <h1><?= htmlspecialchars($book['title']) ?></h1>

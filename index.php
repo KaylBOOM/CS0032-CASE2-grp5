@@ -1,8 +1,9 @@
 <?php
 /**
- * Home Page — Online Bookstore
+ * Home Page — Storyscape
  */
-$pageTitle = 'Home — Online Bookstore';
+session_start();
+$pageTitle = 'Home — Storyscape';
 require_once __DIR__ . '/includes/header.php';
 require_once __DIR__ . '/config/database.php';
 
@@ -17,7 +18,7 @@ $featuredBooks = $stmt->fetchAll();
 ?>
 
 <div class="hero">
-    <h1>Welcome to the Online Bookstore</h1>
+    <h1>Welcome to Storyscape!</h1>
     <p>Discover thousands of books across every genre. Browse, search, and order with ease.</p>
     <a href="books.php" class="btn btn-primary mt-1">Browse All Books</a>
 </div>

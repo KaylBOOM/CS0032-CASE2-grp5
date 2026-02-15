@@ -5,6 +5,7 @@
 session_start();
 require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/config/database.php';
+require_once __DIR__ . '/includes/email_helper.php';
 
 requireLogin();
 
@@ -73,6 +74,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $pdo->commit();
 
+            // Send order confirmation email
+            try {
+                $stmt = $pdo->prepare('SELECT email FROM users WHERE id = ?');
+                $stmt->execute([$userId]);
+                $user = $stmt->fetch();
+
+                $emailData = [
+                    'order_id' => $orderId,
+                    'customer_name' => $shippingName,
+                    'customer_email' => $user['email'],
+                    'items' => $cartItems,
+                    'subtotal' => $subtotal,
+                    'tax' => $tax,
+                    'total' => $total,
+                    'shipping_name' => $shippingName,
+                    'shipping_address' => $shippingAddress,
+                    'shipping_city' => $shippingCity,
+                    'shipping_zip' => $shippingZip,
+                    'shipping_country' => $shippingCountry,
+                    'payment_method' => $paymentMethod
+                ];
+
+                sendOrderConfirmationEmail($emailData);
+            } catch (Exception $emailError) {
+                error_log("Failed to send email: " . $emailError->getMessage());
+            }
+
             // Redirect to confirmation
             header('Location: order_confirmation.php?id=' . $orderId);
             exit;
@@ -83,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$pageTitle = 'Checkout — Online Bookstore';
+$pageTitle = 'Checkout — Storyscape';
 require_once __DIR__ . '/includes/header.php';
 ?>
 
